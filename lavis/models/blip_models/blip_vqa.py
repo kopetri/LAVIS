@@ -239,9 +239,8 @@ class BlipVQA(BlipBase):
 
         question_output = encoder_out
 
-        question_states = question_output.last_hidden_state.repeat_interleave(
-            num_beams, dim=0
-        )
+        question_states = question_output.last_hidden_state
+
         question_atts = torch.ones(question_states.size()[:-1], dtype=torch.long).to(
             self.device
         )
